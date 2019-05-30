@@ -9,10 +9,10 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
-export_file_url = 'https://drive.google.com/uc?export=download&id=1X3MKxLSBVy6SlMxce3KqJJdheiBrY3wE'
-export_file_name = 'export.pkl'
+export_file_url = 'https://drive.google.com/uc?export=download&id=1K9Dua1q8LTalWlur-Mnrl3L0EzaJH1G5'
+export_file_name = 'export2.pkl'
 
-classes = ['pressups', 'crunches']
+classes = ['up', 'down']
 path = Path(__file__).parent
 
 app = Starlette()
@@ -42,12 +42,10 @@ async def setup_learner():
         else:
             raise
 
-
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
 learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
 loop.close()
-
 
 @app.route('/')
 async def homepage(request):
